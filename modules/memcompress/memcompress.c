@@ -353,14 +353,15 @@ int main(void)
     // Based on the added list entry, we can find the head of the memscan list
     //struct list_head* syslinux_memscan_head = &override_entry->next.prev;
 
-    // New memmap entries overrule pevious added entries, so make our function the last in the list.
+    //Will crash syslinux, and since we just added an entry, it should be the last
+    /*// New memmap entries overrule pevious added entries, so make our function the last in the list.
     struct syslinux_memscan *last_entry = list_entry(&override_entry->next.next->next->next, struct syslinux_memscan, next);
     void *org_func = last_entry->func;
 
     last_entry->func = scan_memory_for_chunks;
-    override_entry->func = org_func;
+    override_entry->func = org_func;*/
 
-    sl_dump_memmap(syslinux_memory_map());
+    syslinux_dump_memmap(syslinux_memory_map());
 
     boot_linux();
 
