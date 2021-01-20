@@ -1,5 +1,9 @@
 MODULES  = $(shell find . -mindepth 1  -maxdepth 1 -type d | grep -v shared)
 
+#BIOS
+ARCH=i386
+export ARCH
+
 all:
 	echo "Build modules..."
 
